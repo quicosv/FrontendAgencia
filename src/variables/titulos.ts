@@ -1,4 +1,4 @@
-const aplicacion = "Agencia de viajes los 3 mosqueteros";
+export const aplicacion = "Agencia de viajes los 3 mosqueteros";
 export const home = "Inicio - " + aplicacion;
 export const clientes = "Gestión de clientes" + aplicacion;
 export const mayoristas = "Gestión de mayoristas - " + aplicacion;
