@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import { viajes } from "../../variables/titulos";
+import { h1Viajes, tituloViajes } from "../../variables/titulos";
 
 export const ViajesPage = () => {
 	useEffect(() => {
-		document.title = viajes;
+		document.title = tituloViajes;
 	},[]);
 	return (
-		<h1>Gestión de viajes</h1>
+		<h1>{h1Viajes}</h1>
 	)
 }
