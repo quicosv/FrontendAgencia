@@ -1,11 +1,15 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react";
 import { h1Mayoristas, tituloMayoristas } from "../../variables/titulos";
 
 export const MayoristasPage = () => {
 	useEffect(() => {
 		document.title = tituloMayoristas;
-	},[]);
+	}, []);
+	const h1Ref = useRef(null);
+
 	return (
-		<h1 id="h1principal" tabIndex={-1}>{h1Mayoristas}</h1>
-	)
-}
+		<h1 ref={h1Ref} tabIndex={-1}>
+			{h1Mayoristas}
+		</h1>
+	);
+};

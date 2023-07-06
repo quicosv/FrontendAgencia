@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import { IUsuarioInfoContext } from '../interfaces/context.interface';
