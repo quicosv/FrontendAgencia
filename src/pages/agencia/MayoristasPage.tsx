@@ -6,6 +6,6 @@ export const MayoristasPage = () => {
 		document.title = tituloMayoristas;
 	},[]);
 	return (
-		<h1>{h1Mayoristas}</h1>
+		<h1 id="h1principal" tabIndex={-1}>{h1Mayoristas}</h1>
 	)
 }

@@ -6,6 +6,6 @@ export const ViajesPage = () => {
 		document.title = tituloViajes;
 	},[]);
 	return (
-		<h1>{h1Viajes}</h1>
+		<h1 id="h1principal" tabIndex={-1}>{h1Viajes}</h1>
 	)
 }
