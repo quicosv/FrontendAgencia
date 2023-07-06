@@ -1,5 +1,6 @@
 export const aplicacion = "Agencia de viajes los 3 mosqueteros";
 export const h1Home = "Inicio";
+export const h1PorAhiNo = "Por ahí no puedes ir";
 export const h1Clientes = "Gestión de clientes";
 export const h1Mayoristas = "Gestión de mayoristas";
 export const h1Viajes = "Gestión de viajes";
@@ -9,6 +10,7 @@ export const h1Login = "Inicio de sesión";
 export const h1Catalogo = "Catálogo de viajes";
 export const h1Menu = "Menú principal";
 export const tituloHome = h1Home + " - " + aplicacion;
+export const tituloPorAhiNo = h1PorAhiNo + " - " + aplicacion;
 export const tituloClientes = h1Clientes + " - " + aplicacion;
 export const tituloMayoristas = h1Mayoristas + " - " + aplicacion;
 export const tituloViajes = h1Viajes + " - " + aplicacion;
