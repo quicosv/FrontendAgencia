@@ -18,27 +18,38 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2" aria-label='Menú principal'>
-
-			<Link className="navbar-brand" to="/almacen/categorias">
-				Almacén
-			</Link>
-
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav">
 					<li className="nav-item active">
 						<NavLink
 							className={({ isActive }) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-							to="/almacen/categorias"
+							to="/clientes"
 						>
-							Categorías
+							Clientes
 						</NavLink>
 					</li>
 					<li className="nav-item">
 						<NavLink
 							className={({ isActive }) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
-							to="/almacen/productos"
+							to="/mayoristas"
 						>
-							Productos
+							Mayoristas
+						</NavLink>
+					</li>
+					<li className="nav-item">
+						<NavLink
+							className={({ isActive }) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
+							to="/ventas"
+						>
+							Ventas
+						</NavLink>
+					</li>
+					<li className="nav-item">
+						<NavLink
+							className={({ isActive }) => `nav-item nav-link  ${isActive ? 'active' : ''}`}
+							to="/viajes"
+						>
+							Viajes
 						</NavLink>
 					</li>
 					{usuarioInfo.rol === 1 && (
@@ -52,16 +63,11 @@ export const Navbar = () => {
 			</div>
 
 			<div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
-				<ul className="navbar-nav ml-auto">
-					<li>
-						<span className="nav-item nav-link text-primary">{usuarioInfo.usuario}</span>
-					</li>
-					<li>
+				<div className="navbar-nav ml-auto">
 						<button className="nav-item nav-link btn" onClick={logout}>
-							Cerrar sesión
+							Cerrar sesión de {usuarioInfo.usuario}.
 						</button>
-					</li>
-				</ul>
+				</div>
 			</div>
 		</nav>
 	);
