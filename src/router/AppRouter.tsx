@@ -8,6 +8,7 @@ import { MayoristasPage } from "../pages/agencia/MayoristasPage";
 import { ViajesPage } from "../pages/agencia/ViajesPage";
 import { VentasPage } from "../pages/agencia/VentasPage";
 import { UsuariosPage } from "../pages/usuarios/UsuariosPage";
+import { PorAhiNoPage } from "../pages/PorAhiNoPage";
 
 export const AppRouter = () => {
 	return (
@@ -32,6 +33,7 @@ export const AppRouter = () => {
 				<Route path="/usuarios" element={<AgenciaLayout />}>
 					<Route index element={<UsuariosPage />} />
 				</Route>
+				<Route path="/*" element={<PorAhiNoPage />} />
 			</Routes>
 		</>
 	);
