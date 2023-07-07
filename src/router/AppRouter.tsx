@@ -10,6 +10,7 @@ import { VentasPage } from "../pages/agencia/VentasPage";
 import { UsuariosPage } from "../pages/usuarios/UsuariosPage";
 import { PorAhiNoPage } from "../pages/PorAhiNoPage";
 import { MenuPage } from "../pages/MenuPage";
+import { CatalogoPage } from "../pages/agencia/CatalogoPage";
 
 export const AppRouter = () => {
 	return (
@@ -17,6 +18,7 @@ export const AppRouter = () => {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/menu" element={<MenuPage />} />
+				<Route path="/catalogo" element={<CatalogoPage />} />
 				<Route path="/login" element={<AuthLayout />}>
 					<Route index element={<LoginPage />} />
 				</Route>
