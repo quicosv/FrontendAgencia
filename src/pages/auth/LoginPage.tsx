@@ -53,6 +53,11 @@ useEffect(() => {
 	document.title = tituloLogin;
 },[]);
 const loginRef = useRef<HTMLInputElement>(null);
+useEffect(() => {
+  if (loginRef.current) {
+    loginRef.current.focus();
+  }
+},[]);
   return (
     <>
       <h1>{h1Login}</h1>
