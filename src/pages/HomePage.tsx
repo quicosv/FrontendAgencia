@@ -16,7 +16,7 @@ export const HomePage = () => {
 
 	return (
 		<>
-			<h1 ref={h1Ref}>{h1Home}</h1>
+			<h1 ref={h1Ref} tabIndex={-1}>{h1Home}</h1>
 			<ul>
 				<li>
 					<Link to="/login">Acceso de empleados</Link>
