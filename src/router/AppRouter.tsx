@@ -11,10 +11,25 @@ import { UsuariosPage } from "../pages/usuarios/UsuariosPage";
 import { PorAhiNoPage } from "../pages/PorAhiNoPage";
 import { MenuPage } from "../pages/MenuPage";
 import { CatalogoPage } from "../pages/agencia/CatalogoPage";
+import { useContext, useEffect, useState } from "react";
+import { IUsuarioInfoContext } from "../interfaces/context.interface";
+import { AppContext } from "../context/AppContext";
 
 export const AppRouter = () => {
+	const [loading, setLoading] = useState<boolean>(true);
+	const { setUsuarioInfo } = useContext<IUsuarioInfoContext>(AppContext);
+	useEffect(() => {
+		const infoStorage: ILocalStorageInfo = JSON.parse(localStorage.getItem('usuarioInfo')!);
+		if (infoStorage) {
+			const { rol } = jwt(infoStorage.token) as IToken;
+			setUsuarioInfo({ usuario: infoStorage.email, rol: rol });
+		}
+		setLoading(false);
+	},[]);
+
 	return (
 		<>
+		{!loading && (
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/menu" element={<MenuPage />} />
@@ -39,6 +54,7 @@ export const AppRouter = () => {
 				</Route>
 				<Route path="/*" element={<PorAhiNoPage />} />
 			</Routes>
-		</>
+			)}
+			</>
 	);
 };
