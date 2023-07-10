@@ -14,6 +14,9 @@ import { CatalogoPage } from "../pages/agencia/CatalogoPage";
 import { useContext, useEffect, useState } from "react";
 import { IUsuarioInfoContext } from "../interfaces/context.interface";
 import { AppContext } from "../context/AppContext";
+import { ILocalStorageInfo } from "../interfaces/localStorageInfo.interface";
+import { IToken } from "../interfaces/token.interface";
+import jwt from 'jwt-decode';
 
 export const AppRouter = () => {
 	const [loading, setLoading] = useState<boolean>(true);
