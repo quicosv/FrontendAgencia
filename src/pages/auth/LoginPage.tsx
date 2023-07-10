@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useEffect, useState } from 'react';
+import { FormEvent, useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import jwt from 'jwt-decode';
 import { useForm } from '../../hooks/useForm';
@@ -52,6 +52,7 @@ export const LoginPage = () => {
 useEffect(() => {
 	document.title = tituloLogin;
 },[]);
+const loginRef = useRef<HTMLInputElement>(null);
   return (
     <>
       <h1>{h1Login}</h1>
@@ -59,7 +60,7 @@ useEffect(() => {
       <form onSubmit={login}>
         <div className="form-group">
           <label htmlFor="email">Correo electrónico</label>
-          <input id="email" type="email" className="form-control" value={email} onChange={onInputChange} required />
+          <input id="email" ref={loginRef} type="email" className="form-control" value={email} onChange={onInputChange} required />
         </div>
         <div className="form-group">
           <label htmlFor="password">Contraseña</label>
