@@ -15,6 +15,14 @@ export const useForm = <T>(initialForm: T) => {
     });
   };
 
+  const onSelectChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
+    const { id, value } = target;
+    setForm({
+      ...form,
+      [id]: value
+    });
+  };
+
   // Al ejecutar esta función volvemos al estado inicial
   const onResetForm = () => {
     setForm(initialForm);
@@ -26,6 +34,7 @@ export const useForm = <T>(initialForm: T) => {
     ...form,
     form: form as T,
     onInputChange,
+    onSelectChange,
     onResetForm
   };
 };
