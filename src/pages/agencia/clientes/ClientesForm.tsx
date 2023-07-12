@@ -14,21 +14,19 @@ export const ClientesForm = ({ setRefreshClientes: setRefreshClientes }: IClient
   const [ok, setOk] = useState<boolean>(true);
   const { form, onInputChange, onResetForm } = useForm<ICliente>({
     nombre: '',
-	poblacion: '',
-	telefono: ''
+    poblacion: '',
+    telefono: ''
   });
 
-  const { nombre } = form;
-  const { poblacion } = form;
-  const { telefono } = form;
+  const { nombre, poblacion, telefono } = form;
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const cliente: ICliente = {
-		nombre: '',
-		poblacion: '',
-		telefono: ''
-	};
+      nombre: nombre,
+      poblacion: poblacion,
+      telefono: telefono
+    };
     try {
       setLoading(true);
       setErrorMsg('');
@@ -52,10 +50,10 @@ export const ClientesForm = ({ setRefreshClientes: setRefreshClientes }: IClient
           <label htmlFor="nombre">Nombre</label>
           <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
           {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
-		  <label htmlFor="poblacion">Población</label>
+          <label htmlFor="poblacion">Población</label>
           <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} />
           {poblacion.trim() === '' && <small className="text-danger">Población obligatoria</small>}
-		  <label htmlFor="telefono">Teléfono</label>
+          <label htmlFor="telefono">Teléfono</label>
           <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} />
           {telefono.trim() === '' && <small className="text-danger">Teléfono obligatorio</small>}
         </div>
