@@ -3,7 +3,7 @@ import { HomePage } from "../pages/HomePage";
 import { AuthLayout } from "../layout/AuthLayout";
 import { LoginPage } from "../pages/auth/LoginPage";
 import { AgenciaLayout } from "../layout/AgenciaLayout";
-import { ClientesPage } from "../pages/agencia/ClientesPage";
+import { ClientesPage } from "../pages/agencia/clientes/ClientesPage";
 import { MayoristasPage } from "../pages/agencia/MayoristasPage";
 import { ViajesPage } from "../pages/agencia/ViajesPage";
 import { VentasPage } from "../pages/agencia/VentasPage";
