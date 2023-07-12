@@ -14,16 +14,18 @@ export const ClientesPage = () => {
 			h1Ref.current.focus();
 		}
 	}, []);
-	return <h1 ref={h1Ref} tabIndex={-1}>{h1Clientes}</h1>;
-	return(
-	<div className="row">
-        <div className="col">
-          <ClientesForm setRefreshClientes={setRefreshClientes} />
-        </div>
-        <div className="col">
-		  <ClientesTable refreshClientes={refreshClientes} setRefreshClientes={setRefreshClientes} />
+	return (
+		<>
+			<h1 ref={h1Ref} tabIndex={-1}>{h1Clientes}</h1>;
+			<div className="row">
+				<div className="col">
+					<ClientesForm setRefreshClientes={setRefreshClientes} />
+				</div>
+				<div className="col">
+					<ClientesTable refreshClientes={refreshClientes} setRefreshClientes={setRefreshClientes} />
 
-        </div>
-      </div>
-	)
+				</div>
+			</div>
+			</>
+			)
 };
