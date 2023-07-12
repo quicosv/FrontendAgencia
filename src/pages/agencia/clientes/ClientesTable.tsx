@@ -87,7 +87,7 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
             <tbody>
               {clientes.map((x) => (
                 <tr key={x.idcliente}>
-                  <th className='table-cell' scope='row'>{x.nombre}</td>
+                  <th className='table-cell' scope='row'>{x.nombre}</th>
 				  <td>{x.poblacion}</td>
                   <td>{x.telefono}</td>
                   <td>
