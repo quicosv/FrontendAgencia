@@ -20,6 +20,7 @@ export const UsuariosTable = ({ refreshUsuarios, setRefreshUsuarios }: IUsuarios
   const confirm = (id: number | undefined) => {
     confirmDialog({
       message: '¿Estás seguro?',
+      ariaCloseIconLabel: 'Cerrar',
       header: 'Eliminar usuario',
       acceptClassName: 'p-button-danger',
       acceptLabel: 'Sí',
