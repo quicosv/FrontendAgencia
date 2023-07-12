@@ -59,6 +59,7 @@ export const ClientesModal = ({
   return (
     <>
       <Dialog
+      ariaCloseIconLabel='Cerrar'
         header="Modificar cliente"
         visible={showModificar}
         style={{ width: '50vw' }}
