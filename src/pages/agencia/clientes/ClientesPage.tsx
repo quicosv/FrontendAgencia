@@ -16,16 +16,20 @@ export const ClientesPage = () => {
 	}, []);
 	return (
 		<>
-			<h1 ref={h1Ref} tabIndex={-1}>{h1Clientes}</h1>;
+			<h1 ref={h1Ref} tabIndex={-1}>
+				{h1Clientes}
+			</h1>
 			<div className="row">
 				<div className="col">
 					<ClientesForm setRefreshClientes={setRefreshClientes} />
 				</div>
 				<div className="col">
-					<ClientesTable refreshClientes={refreshClientes} setRefreshClientes={setRefreshClientes} />
-
+					<ClientesTable
+						refreshClientes={refreshClientes}
+						setRefreshClientes={setRefreshClientes}
+					/>
 				</div>
 			</div>
-			</>
-			)
+		</>
+	);
 };
