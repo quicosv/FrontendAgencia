@@ -21,6 +21,7 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
   const confirm = (id: number | undefined) => {
     confirmDialog({
       message: '¿Estás seguro?',
+      ariaCloseIconLabel: 'Cerrar',
       header: 'Eliminar cliente',
       acceptClassName: 'p-button-danger',
       acceptLabel: 'Sí',
