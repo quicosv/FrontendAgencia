@@ -22,28 +22,28 @@ export const ClientesModal = ({
   const [ok, setOk] = useState<boolean>(true);
   const { idcliente: idcliente } = cliente;
   const { form, onInputChange } = useForm<ICliente>({
-	  nombre: cliente.nombre,
-	  poblacion: '',
-	  telefono: ''
+    nombre: cliente.nombre,
+    poblacion: cliente.poblacion,
+    telefono: cliente.telefono
   });
 
-  const { nombre, poblacion, telefono} = form;
+  const { nombre, poblacion, telefono } = form;
 
   const hideModal = () => setShowModificar(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    updateCategoria();
+    updateCliente();
   };
 
-  const updateCategoria = async () => {
+  const updateCliente = async () => {
     try {
       setErrorMsg('');
       const cliente: ICliente = {
-		  nombre: nombre,
-		  poblacion: '',
-		  telefono: ''
-	  };
+        nombre: nombre,
+        poblacion: poblacion,
+        telefono: telefono
+      };
       await clienteAxios.put<ICliente[]>(`/clientes/${idcliente}`, cliente);
       setShowModificar(false);
       setRefreshClientes(true);
@@ -69,7 +69,7 @@ export const ClientesModal = ({
             <label htmlFor="nombre">Nombre</label>
             <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
             {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
-			<label htmlFor="poblacion">Población</label>
+            <label htmlFor="poblacion">Población</label>
             <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} />
             {poblacion.trim() === '' && <small className="text-danger">Población obligatoria</small>}
             <label htmlFor="telefono">Teléfono</label>
