@@ -39,7 +39,7 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
   const getClientes = async () => {
     try {
       setErrorMsg('');
-      const { data } = await clienteAxios.get<ICliente[]>('/categorias');
+      const { data } = await clienteAxios.get<ICliente[]>('/clientes');
       setRefreshClientes(false);
       setClientes(data);
       setOk(true);
