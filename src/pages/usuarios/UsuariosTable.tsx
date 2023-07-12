@@ -78,7 +78,7 @@ export const UsuariosTable = ({ refreshUsuarios, setRefreshUsuarios }: IUsuarios
             <tbody>
               {usuarios.map((x) => (
                 <tr key={x.idUsuario}>
-                  <th className='table-cell' scope='row'>{x.email}</td>
+                  <th className='table-cell' scope='row'>{x.email}</th>
                   <td>{x.roles_idRol === 1 ? 'Administrador' : 'Usuario'}</td>
                   <td>
                     <button
