@@ -3,54 +3,56 @@ import { Dialog } from 'primereact/dialog';
 import { useForm } from '../../../hooks/useForm';
 import { clienteAxios } from '../../../config/clienteAxios';
 import { handlerAxiosError } from '../../../helpers/handlerAxiosError';
-import { ICliente } from '../../../interfaces/cliente.interface';
+import { IMayorista } from '../../../interfaces/mayorista.interface';
 
-interface IClientesModalProps {
-  cliente: ICliente;
+interface IMayoristasModalProps {
+  mayorista: IMayorista;
   setShowModificar: React.Dispatch<React.SetStateAction<boolean>>;
-  setRefreshClientes: React.Dispatch<React.SetStateAction<boolean>>;
+  setRefreshMayoristas: React.Dispatch<React.SetStateAction<boolean>>;
   showModificar: boolean;
 }
 
-export const ClientesModal = ({
-  cliente: cliente,
-  setRefreshClientes: setRefreshClientes,
+export const MayoristasModal = ({
+  mayorista: mayorista,
+  setRefreshMayoristas: setRefreshMayoristas,
   setShowModificar,
   showModificar
-}: IClientesModalProps) => {
+}: IMayoristasModalProps) => {
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [ok, setOk] = useState<boolean>(true);
-  const { idcliente: idcliente } = cliente;
-  const { form, onInputChange } = useForm<ICliente>({
-    nombre: cliente.nombre,
-    poblacion: cliente.poblacion,
-    telefono: cliente.telefono
+  const { idmayorista: idmayorista } = mayorista;
+  const { form, onInputChange } = useForm<IMayorista>({
+    nombre: mayorista.nombre,
+    telefono: mayorista.telefono,
+    direccion: mayorista.direccion,
+    contacto: mayorista.contacto
   });
 
-  const { nombre, poblacion, telefono } = form;
+  const { nombre, telefono, direccion, contacto } = form;
 
   const hideModal = () => setShowModificar(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    updateCliente();
+    updateMayorista();
   };
 
-  const updateCliente = async () => {
+  const updateMayorista = async () => {
     try {
       setErrorMsg('');
-      const cliente: ICliente = {
+      const mayorista: IMayorista = {
         nombre: nombre,
-        poblacion: poblacion,
-        telefono: telefono
+        telefono: telefono,
+        direccion: direccion,
+        contacto: contacto
       };
-      await clienteAxios.put<ICliente[]>(`/clientes/${idcliente}`, cliente);
+      await clienteAxios.put<IMayorista[]>(`/mayoristas/${idmayorista}`, mayorista);
       setShowModificar(false);
-      setRefreshClientes(true);
+      setRefreshMayoristas(true);
       setOk(true);
     } catch (error) {
       setOk(false);
-      setRefreshClientes(false);
+      setRefreshMayoristas(false);
       const errores = await handlerAxiosError(error);
       setErrorMsg(errores);
     }
@@ -59,8 +61,8 @@ export const ClientesModal = ({
   return (
     <>
       <Dialog
-      ariaCloseIconLabel='Cerrar'
-        header="Modificar cliente"
+        ariaCloseIconLabel='Cerrar'
+        header="Modificar mayorista"
         visible={showModificar}
         style={{ width: '50vw' }}
         onHide={() => setShowModificar(false)}
@@ -70,12 +72,13 @@ export const ClientesModal = ({
             <label htmlFor="nombre">Nombre</label>
             <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
             {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
-            <label htmlFor="poblacion">Población</label>
-            <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} />
-            {poblacion.trim() === '' && <small className="text-danger">Población obligatoria</small>}
             <label htmlFor="telefono">Teléfono</label>
-            <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} />
+            <input className="form-control" id="telefono" type="tel" value={telefono} onChange={onInputChange} />
             {telefono.trim() === '' && <small className="text-danger">Teléfono obligatorio</small>}
+            <label htmlFor="direccion">Dirección</label>
+            <input type="text" id='direccion' value={direccion} />
+            <label htmlFor="contacto">Contacto</label>
+            <input type="text" id='contacto' value={contacto} />
             <button className="btn btn-warning mt-4" type="submit">
               Guardar
             </button>
