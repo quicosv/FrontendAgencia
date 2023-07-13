@@ -3,6 +3,7 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { clienteAxios } from '../../../config/clienteAxios';
 import { handlerAxiosError } from '../../../helpers/handlerAxiosError';
 import { IMayorista } from '../../../interfaces/mayorista.interface';
+import { MayoristasModal } from './MayoristasModal';
 
 interface IMayoristasTableProps {
   refreshMayoristas: boolean;
@@ -107,7 +108,7 @@ export const MayoristasTable = ({ refreshMayoristas: refreshMayoristas, setRefre
           </table>
           <ConfirmDialog />
           {showModificar && (
-            <mayoristaModal
+            <MayoristasModal
               mayorista={mayoristaModal}
               setShowModificar={setShowModificar}
               showModificar={showModificar}
@@ -129,7 +130,4 @@ export const MayoristasTable = ({ refreshMayoristas: refreshMayoristas, setRefre
     </>
   );
 };
-function getMayoristas() {
-	throw new Error('Function not implemented.');
-}
 
