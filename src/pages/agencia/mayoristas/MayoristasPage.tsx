@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { h1Clientes, tituloClientes } from "../../../variables/titulos";
-import { ClientesTable } from "./ClientesTable";
-import { ClientesForm } from "./ClientesForm";
+import { h1Mayoristas, tituloMayoristas } from "../../../variables/titulos";
+import { MayoristasForm } from "./MayoristasForm";
+import { MayoristasTable } from "./MayoristasTable";
 
-export const ClientesPage = () => {
-	const [refreshClientes, setRefreshClientes] = useState<boolean>(true);
+export const MayoristasPage = () => {
+	const [refreshMayoristas, setRefreshMayoristas] = useState<boolean>(true);
 	useEffect(() => {
-		document.title = tituloClientes;
+		document.title = tituloMayoristas;
 	}, []);
 	const h1Ref = useRef<HTMLHeadingElement>(null);
 	useEffect(() => {
@@ -17,16 +17,16 @@ export const ClientesPage = () => {
 	return (
 		<>
 			<h1 ref={h1Ref} tabIndex={-1}>
-				{h1Clientes}
+				{h1Mayoristas}
 			</h1>
 			<div className="row">
 				<div className="col">
-					<ClientesForm setRefreshClientes={setRefreshClientes} />
+					<MayoristasForm setRefreshMayoristas={setRefreshMayoristas} />
 				</div>
 				<div className="col">
-					<ClientesTable
-						refreshClientes={refreshClientes}
-						setRefreshClientes={setRefreshClientes}
+					<MayoristasTable
+						refreshMayoristas={refreshMayoristas}
+						setRefreshMayoristas={setRefreshMayoristas}
 					/>
 				</div>
 			</div>

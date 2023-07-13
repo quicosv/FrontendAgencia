@@ -2,18 +2,17 @@ import { useEffect, useState } from 'react';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { clienteAxios } from '../../../config/clienteAxios';
 import { handlerAxiosError } from '../../../helpers/handlerAxiosError';
-import { ClientesModal } from './ClientesModal';
-import { ICliente } from '../../../interfaces/cliente.interface';
+import { IMayorista } from '../../../interfaces/mayorista.interface';
 
-interface IClientesTableProps {
-  refreshClientes: boolean;
-  setRefreshClientes: React.Dispatch<React.SetStateAction<boolean>>;
+interface IMayoristasTableProps {
+  refreshMayoristas: boolean;
+  setRefreshMayoristas: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClientes: setRefreshClientes }: IClientesTableProps) => {
+export const MayoristasTable = ({ refreshMayoristas: refreshMayoristas, setRefreshMayoristas: setRefreshMayoristas }: IMayoristasTableProps) => {
   const [showModificar, setShowModificar] = useState(false);
-  const [clienteModal, setClienteModal] = useState<ICliente>({ nombre: '', poblacion: '', telefono: ''});
-  const [clientes, setClientes] = useState<ICliente[]>([]);
+  const [mayoristaModal, setMayoristaModal] = useState<IMayorista>({ nombre: '', telefono: '', direccion: '', contacto: '' });
+  const [mayoristas, setMayoristas] = useState<IMayorista[]>([]);
 
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [ok, setOk] = useState<boolean>(true);
@@ -22,49 +21,49 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
     confirmDialog({
       message: '¿Estás seguro?',
       ariaCloseIconLabel: 'Cerrar',
-      header: 'Eliminar cliente',
+      header: 'Eliminar mayorista',
       acceptClassName: 'p-button-danger',
       acceptLabel: 'Sí',
-      accept: () => deleteCliente(id)
+      accept: () => deleteMayorista(id)
       //   reject
     });
   };
 
   useEffect(() => {
-    if (refreshClientes) {
-      getClientes();
+    if (refreshMayoristas) {
+      getMayoristas();
     }
-  }, [refreshClientes]);
+  }, [refreshMayoristas]);
 
-  const getClientes = async () => {
+  const getMayoristas = async () => {
     try {
       setErrorMsg('');
-      const { data } = await clienteAxios.get<ICliente[]>('/clientes');
-      setRefreshClientes(false);
-      setClientes(data);
+      const { data } = await clienteAxios.get<IMayorista[]>('/mayoristas');
+      setRefreshMayoristas(false);
+      setMayoristas(data);
       setOk(true);
     } catch (error) {
       setOk(false);
-      setRefreshClientes(false);
+      setRefreshMayoristas(false);
       const errores = await handlerAxiosError(error);
       setErrorMsg(errores);
     }
   };
 
-  const editCliente = (e: ICliente) => {
-    setClienteModal(e);
+  const editMayorista = (e: IMayorista) => {
+    setMayoristaModal(e);
     setShowModificar(true);
   };
 
-  const deleteCliente = async (id: number | undefined) => {
+  const deleteMayorista = async (id: number | undefined) => {
     try {
       setErrorMsg('');
-      await clienteAxios.delete<ICliente[]>(`/clientes/${id}`);
-      setRefreshClientes(true);
+      await clienteAxios.delete<IMayorista[]>(`/clientes/${id}`);
+      setRefreshMayoristas(true);
       setOk(true);
     } catch (error) {
       setOk(false);
-      setRefreshClientes(false);
+      setRefreshMayoristas(false);
       const errores = await handlerAxiosError(error);
       setErrorMsg(errores);
     }
@@ -72,31 +71,33 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
 
   return (
     <>
-      {clientes?.length > 0 && (
+      {mayoristas?.length > 0 && (
         <>
-          <h2>Total clientes: {clientes.length}</h2>
+          <h2>Total mayoristas: {mayoristas.length}</h2>
           <table className="table">
             <thead>
               <tr>
                 <th>Nombre</th>
-				<th>Población</th>
                 <th>Teléfono</th>
+				<th>Dirección</th>
+				<th>Contacto</th>
                 <th scope='col' colSpan={2}>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {clientes.map((x) => (
-                <tr key={x.idcliente}>
+              {mayoristas.map((x) => (
+                <tr key={x.idmayorista}>
                   <th className='table-cell' scope='row'>{x.nombre}</th>
-				  <td>{x.poblacion}</td>
                   <td>{x.telefono}</td>
+				  <td>{x.direccion}</td>
+				  <td>{x.contacto}</td>
                   <td>
-                    <button className="btn btn-warning" onClick={() => editCliente(x)}>
+                    <button className="btn btn-warning" onClick={() => editMayorista(x)}>
                       Modificar
                     </button>
                   </td>
                   <td>
-                    <button className="btn btn-danger" onClick={() => confirm(x.idcliente)}>
+                    <button className="btn btn-danger" onClick={() => confirm(x.idmayorista)}>
                       Eliminar
                     </button>
                   </td>
@@ -106,21 +107,21 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
           </table>
           <ConfirmDialog />
           {showModificar && (
-            <ClientesModal
-              cliente={clienteModal}
+            <mayoristaModal
+              mayorista={mayoristaModal}
               setShowModificar={setShowModificar}
               showModificar={showModificar}
-              setRefreshClientes={setRefreshClientes}
+              setRefreshMayoristas={setRefreshMayoristas}
             />
           )}
         </>
       )}
-      {refreshClientes && (
+      {refreshMayoristas && (
         <div className="alert alert-warning" role="status" aria-live="polite">
-          Actualizando clientes...
+          Actualizando mayoristas...
         </div>
       )}
-      {!ok && errorMsg && !refreshClientes && (
+      {!ok && errorMsg && !refreshMayoristas && (
         <div className="alert alert-danger" role="status" aria-live="polite">
           {errorMsg}
         </div>
@@ -128,3 +129,7 @@ export const ClientesTable = ({ refreshClientes: refreshClientes, setRefreshClie
     </>
   );
 };
+function getMayoristas() {
+	throw new Error('Function not implemented.');
+}
+

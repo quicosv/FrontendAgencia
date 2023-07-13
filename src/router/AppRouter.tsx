@@ -4,9 +4,6 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { LoginPage } from "../pages/auth/LoginPage";
 import { AgenciaLayout } from "../layout/AgenciaLayout";
 import { ClientesPage } from "../pages/agencia/clientes/ClientesPage";
-import { MayoristasPage } from "../pages/agencia/MayoristasPage";
-import { ViajesPage } from "../pages/agencia/ViajesPage";
-import { VentasPage } from "../pages/agencia/VentasPage";
 import { UsuariosPage } from "../pages/usuarios/UsuariosPage";
 import { PorAhiNoPage } from "../pages/PorAhiNoPage";
 import { MenuPage } from "../pages/MenuPage";
@@ -17,6 +14,9 @@ import { AppContext } from "../context/AppContext";
 import { ILocalStorageInfo } from "../interfaces/localStorageInfo.interface";
 import { IToken } from "../interfaces/token.interface";
 import jwt from 'jwt-decode';
+import { VentasPage } from "../pages/agencia/ventas/VentasPage";
+import { ViajesPage } from "../pages/agencia/viajes/ViajesPage";
+import { MayoristasPage } from "../pages/agencia/mayoristas/MayoristasPage";
 
 export const AppRouter = () => {
 	const [loading, setLoading] = useState<boolean>(true);
