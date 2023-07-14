@@ -70,15 +70,13 @@ export const MayoristasModal = ({
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
-            <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
-            {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
+            <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} maxLength={20} title='Se admiten 20 caracteres como máximo' required />
             <label htmlFor="telefono">Teléfono</label>
-            <input className="form-control" id="telefono" type="tel" value={telefono} onChange={onInputChange} />
-            {telefono.trim() === '' && <small className="text-danger">Teléfono obligatorio</small>}
+            <input className="form-control" id="telefono" type="tel" value={telefono} onChange={onInputChange} autoComplete='tel-local' required />
             <label htmlFor="direccion">Dirección</label>
-            <input type="text" id='direccion' value={direccion} />
+            <input type="text" id='direccion' value={direccion} autoComplete='street-address' required />
             <label htmlFor="contacto">Contacto</label>
-            <input type="text" id='contacto' value={contacto} />
+            <input type="text" id='contacto' value={contacto} maxLength={20} title='Se admite un máximo de 20 caracteres' required />
             <button className="btn btn-warning mt-4" type="submit">
               Guardar
             </button>

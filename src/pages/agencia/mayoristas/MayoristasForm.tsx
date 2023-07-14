@@ -2,7 +2,6 @@ import { FormEvent, useState } from 'react';
 import { useForm } from '../../../hooks/useForm';
 import { clienteAxios } from '../../../config/clienteAxios';
 import { handlerAxiosError } from '../../../helpers/handlerAxiosError';
-import { ICliente } from '../../../interfaces/cliente.interface';
 import { IMayorista } from '../../../interfaces/mayorista.interface';
 
 interface IMayoristasFormProps {
@@ -51,21 +50,17 @@ export const MayoristasForm = ({ setRefreshMayoristas: setRefreshMayoristas }: I
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
-          <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
-          {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
+          <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} maxLength={20} title='Se permiten 20 caracteres como máximo' required />
           <label htmlFor="telefono">Teléfono</label>
-          <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} />
-          {telefono.trim() === '' && <small className="text-danger">Teléfono obligatorio</small>}
+          <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} autoComplete='tel-local' required />
 		  <label htmlFor="direccion">Dirección</label>
-          <input className="form-control" id="direccion" type="text" value={direccion} onChange={onInputChange} />
-          {direccion.trim() === '' && <small className="text-danger">Dirección obligatorio</small>}
+          <input className="form-control" id="direccion" type="text" value={direccion} onChange={onInputChange} autoComplete='street-address' required />
           <label htmlFor="contacto">Contacto</label>
-          <input className="form-control" id="contacto" type="text" value={contacto} onChange={onInputChange} />
-          {contacto.trim() === '' && <small className="text-danger">Contacto obligatorio</small>}
+          <input className="form-control" id="contacto" type="text" value={contacto} onChange={onInputChange} maxLength={20} title='Se permiten 20 caracteres como máximo' required />
           
         </div>
 
-        <button className="btn btn-success mt-4" type="submit" disabled={nombre.trim() === ''}>
+        <button className="btn btn-success mt-4" type="submit">
           Agregar cliente
         </button>
       </form>

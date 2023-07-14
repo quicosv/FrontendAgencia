@@ -47,14 +47,12 @@ export const UsuariosForm = ({ setRefreshUsuarios }: IUsuariosFormProps) => {
     <>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="descripcion">Email</label>
-          <input className="form-control" id="email" type="email" value={email} onChange={onInputChange} />
-          {email.trim() === '' && <small className="text-danger">Email obligatorio</small>}
+          <label htmlFor="email">Correo electrónico</label>
+          <input className="form-control" id="email" type="email" value={email} onChange={onInputChange} autoComplete='email' required />
         </div>
         <div className="form-group">
           <label htmlFor="password">Contraseña</label>
-          <input className="form-control" id="password" type="password" value={password} onChange={onInputChange} />
-          {email.trim() === '' && <small className="text-danger">Contraseña 6 caracteres mínimo</small>}
+          <input className="form-control" id="password" type="password" value={password} onChange={onInputChange} pattern='.{6,}' title='La contraseña debe tener al menos 6 caracteres' required />
         </div>
         <div className="form-group">
           <label htmlFor="roles_idRol">Rol</label>
@@ -64,7 +62,7 @@ export const UsuariosForm = ({ setRefreshUsuarios }: IUsuariosFormProps) => {
           </select>
         </div>
 
-        <button className="btn btn-success" type="submit" disabled={email.trim() === '' || password.trim().length < 6}>
+        <button className="btn btn-success" type="submit">
           Agregar usuario
         </button>
       </form>
