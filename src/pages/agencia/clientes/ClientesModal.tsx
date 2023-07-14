@@ -68,14 +68,11 @@ export const ClientesModal = ({
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
-            <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
-            {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
+            <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} maxLength={30} title='Se permiten 30 caracteres como máximo' required />
             <label htmlFor="poblacion">Población</label>
-            <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} />
-            {poblacion.trim() === '' && <small className="text-danger">Población obligatoria</small>}
+            <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} maxLength={40} title='Se permiten 40 caracteres como máximo' required />
             <label htmlFor="telefono">Teléfono</label>
-            <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} />
-            {telefono.trim() === '' && <small className="text-danger">Teléfono obligatorio</small>}
+            <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} autoComplete='tel-local' required />
             <button className="btn btn-warning mt-4" type="submit">
               Guardar
             </button>

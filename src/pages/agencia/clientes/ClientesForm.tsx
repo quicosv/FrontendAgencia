@@ -50,7 +50,7 @@ export const ClientesForm = ({ setRefreshClientes: setRefreshClientes }: IClient
           <label htmlFor="nombre">Nombre</label>
           <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} maxLength={30} title='Se permiten 30 caracteres como máximo' required />
           <label htmlFor="poblacion">Población</label>
-          <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} maxLength={40} title='Se permite un máximo de 40 caracteres' required />
+          <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} maxLength={40} title='Se permiten 40 caracteres como máximo' required />
           <label htmlFor="telefono">Teléfono</label>
           <input className="form-control" id="telefono" type="tel" value={telefono} onChange={onInputChange} autoComplete='tel-local' required />
         </div>
