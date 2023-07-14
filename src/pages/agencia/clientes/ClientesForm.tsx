@@ -48,17 +48,14 @@ export const ClientesForm = ({ setRefreshClientes: setRefreshClientes }: IClient
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
-          <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} />
-          {nombre.trim() === '' && <small className="text-danger">Nombre obligatorio</small>}
+          <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} maxLength={30} title='Se permiten 30 caracteres como máximo' required />
           <label htmlFor="poblacion">Población</label>
-          <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} />
-          {poblacion.trim() === '' && <small className="text-danger">Población obligatoria</small>}
+          <input className="form-control" id="poblacion" type="text" value={poblacion} onChange={onInputChange} maxLength={40} title='Se permite un máximo de 40 caracteres' required />
           <label htmlFor="telefono">Teléfono</label>
-          <input className="form-control" id="telefono" type="text" value={telefono} onChange={onInputChange} />
-          {telefono.trim() === '' && <small className="text-danger">Teléfono obligatorio</small>}
+          <input className="form-control" id="telefono" type="tel" value={telefono} onChange={onInputChange} autoComplete='tel-local' required />
         </div>
 
-        <button className="btn btn-success mt-4" type="submit" disabled={nombre.trim() === ''}>
+        <button className="btn btn-success mt-4" type="submit">
           Agregar cliente
         </button>
       </form>
