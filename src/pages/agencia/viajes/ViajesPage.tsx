@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
-import { h1Viajes, tituloViajes } from "../../variables/titulos";
+import { useEffect, useRef, useState } from "react";
+import { h1Viajes, tituloViajes } from "../../../variables/titulos";
+import { ViajesForm } from "./ViajesForm";
 
 export const ViajesPage = () => {
 	useEffect(() => {
@@ -11,9 +12,21 @@ useEffect(() => {
 		h1Ref.current.focus();
 	}
 },[]);
+const [refreshViajes, setRefreshViajes] = useState<boolean>(true);
+
 	return (
+		<>
 		<h1 ref={h1Ref} tabIndex={-1}>
 			{h1Viajes}
 		</h1>
+			  <div className="row">
+				<div className="col">
+				  <ViajesForm setRefreshViajes={setRefreshViajes} />
+				</div>
+				<div className="col">
+				  <ViajesTable refreshViajes={refreshViajes} setRefreshViajes={setRefreshViajes} />
+				</div>
+			  </div>
+			  </>		
 	);
 };
