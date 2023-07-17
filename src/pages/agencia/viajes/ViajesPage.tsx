@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { h1Viajes, tituloViajes } from "../../../variables/titulos";
 import { ViajesForm } from "./ViajesForm";
+import { ViajesTable } from "./ViajesTable";
 
 export const ViajesPage = () => {
 	useEffect(() => {
