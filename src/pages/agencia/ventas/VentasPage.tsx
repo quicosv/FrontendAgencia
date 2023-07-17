@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { h1Ventas, tituloVentas } from "../../variables/titulos";
+import { h1Ventas, tituloVentas } from "../../../variables/titulos";
 
 export const VentasPage = () => {
 	useEffect(() => {
