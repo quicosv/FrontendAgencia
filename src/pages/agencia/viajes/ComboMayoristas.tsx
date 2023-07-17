@@ -40,8 +40,8 @@ export const ComboMayoristas = ({ setSelected, activa }: IComboMayoristasProps) 
       {mayoristas && (
         <>
           <div className="form-group">
-            <label htmlFor="mayoristas_idmayorista">Mayorista</label>
-            <select className="form-select" id="mayoristas_idMayorista" onChange={selectedMayorista} value={activa}>
+            <label htmlFor="idmayorista">Mayorista</label>
+            <select className="form-select" id="idMayorista" onChange={selectedMayorista} value={activa}>
               {mayoristas.map((x) => (
                 <option key={x.idmayorista} value={x.idmayorista}>
                   {x.nombre}
