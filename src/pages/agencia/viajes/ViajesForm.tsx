@@ -61,19 +61,19 @@ export const ViajesForm = ({ setRefreshViajes: setRefreshViajes }: IViajesFormPr
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
-          <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} required/>
+          <input className="form-control" id="nombre" type="text" value={nombre} onChange={onInputChange} maxLength={20} title='Se permiten 20 caracteres como máximo' required/>
         </div>
 
         <ComboMayoristas setSelected={onSelectChange} activa={idmayorista} />
 
         <div className="form-group">
           <label htmlFor="duracion">Duración</label>
-          <input className="form-control" id="duracion" type="number" value={duracion} onChange={onInputChange} required/>
+          <input className="form-control" id="duracion" type="number" value={duracion} onChange={onInputChange} min={1} title='La duración mínima no puede ser menor que un día' required/>
         </div>
 
         <div className="form-group">
           <label htmlFor="precio">Precio</label>
-          <input className="form-control" id="precio" type="number" value={precio} onChange={onInputChange} required/>
+          <input className="form-control" id="precio" type="number" value={precio} onChange={onInputChange} min={0} title='Aquí pone lo que cuesta el viaje' required/>
         </div>
 
         <button className="btn btn-success mt-4" type="submit" disabled={!validForm()}>

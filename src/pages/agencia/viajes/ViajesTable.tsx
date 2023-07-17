@@ -5,8 +5,8 @@ import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
 import { clienteAxios } from '../../../config/clienteAxios';
 import { handlerAxiosError } from '../../../helpers/handlerAxiosError';
-import { ProductosModal } from './ProductosModal';
 import { IViaje } from '../../../interfaces/viaje.interface';
+import { ViajesModal } from './ViajesModal';
 
 interface IViajesTableProps {
   refreshViajes: boolean;
