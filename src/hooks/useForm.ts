@@ -7,15 +7,7 @@ export const useForm = <T>(initialForm: T) => {
 
   // Al cambiar cualquier campo, este se modifica y gracias a setForm se genera un nuevo estado del formulario.
   // Este nuevo estado tendrá todas las propiedades del formulario (...form) y el valor del campo modificado ([id]) con el nuevo valor (value)
-  const onInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = target;
-    setForm({
-      ...form,
-      [id]: value
-    });
-  };
-
-  const onSelectChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
+  const onInputChange = ({ target }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = target;
     setForm({
       ...form,
@@ -28,6 +20,22 @@ export const useForm = <T>(initialForm: T) => {
     setForm(initialForm);
   };
 
+  const onSelectChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
+    const { id, value } = target;
+    setForm({
+      ...form,
+      [id]: value
+    });
+  };
+
+  const onCheckBoxChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = target;
+    setForm({
+      ...form,
+      [id]: checked
+    });
+  };
+
   // Devolvemos todo el formulario y de esas propiedades cambiamos la propiedad form con el tipo de objeto que estamos gestionando (as T) y las funciones.
   // Todo esto lo podrá utilizar el componente que llame a este hook
   return {
@@ -35,6 +43,7 @@ export const useForm = <T>(initialForm: T) => {
     form: form as T,
     onInputChange,
     onSelectChange,
+    onCheckBoxChange,
     onResetForm
   };
 };
