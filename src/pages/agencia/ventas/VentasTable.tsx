@@ -82,21 +82,21 @@ export const VentasTable = ({ refreshVentas: refreshVentas, setRefreshVentas: se
   // PrimeReact datatable
 
   // Plantlla para dibujar los botones
-  const actionBodyTemplate = (viaje: IViaje) => {
+  const actionBodyTemplate = (venta: IVenta) => {
     return (
       <>
         <Button
           label="Modificar"
           className="p-button-rounded p-button-success p-mr-2"
           severity="warning"
-          onClick={() => editVenta(viaje)}
+          onClick={() => editVenta(venta)}
         />
 
         <Button
           label="Eliminar"
           className="p-button-rounded p-button-success p-mr-2"
           severity="danger"
-          onClick={() => confirm(viaje.idviaje)}
+          onClick={() => confirm(venta.idviaje)}
         />
       </>
     );
@@ -106,7 +106,7 @@ export const VentasTable = ({ refreshVentas: refreshVentas, setRefreshVentas: se
     <>
       {ventas?.length > 0 && (
         <>
-          <h2>Total viajes: {ventas.length}</h2>
+          <h2>Total ventas: {ventas.length}</h2>
 
           <DataTable
             value={ventas}
@@ -117,10 +117,10 @@ export const VentasTable = ({ refreshVentas: refreshVentas, setRefreshVentas: se
             rows={10}
             rowsPerPageOptions={[10, 20, 50]}
           >
-            <Column field=".idcliente" header="Cliente" filter filterPlaceholder="Buscar" sortable></Column>
+            <Column field="clientes.nombre" header="Cliente" filter filterPlaceholder="Buscar" sortable></Column>
             <Column field="fechasalida" header="Fecha de salida" filter filterPlaceholder="Buscar" sortable></Column>
-            <Column field="precio" header="Precio" filter filterPlaceholder="Buscar" sortable style={{ textAlign: 'right' }}></Column>
-            <Column field="mayoristas.nombre" header="Vendedor" filter sortable></Column>
+            <Column field="viajes.nombre" header="Viajes" filter sortable></Column>
+			<Column field="segurocancelacion" header="Seguro de cancelación" filter filterPlaceholder="Buscar" sortable style={{ textAlign: 'right' }}></Column>
             <Column body={actionBodyTemplate}></Column>
           </DataTable>
           <ConfirmDialog />
