@@ -14,9 +14,11 @@ export const VentasForm = ({ setRefresshVentas: setRefreshViajes }: IVentasFormP
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [ok, setOk] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
   const { form, onInputChange, onSelectChange, onCheckBoxChange, onResetForm } = useForm<IVenta>({
     idcliente: 0,
-    fechasalida: new Date(),
+    fechasalida: currentDate,
     idviaje: 0,
     segurocancelacion: false
   });
@@ -53,7 +55,7 @@ export const VentasForm = ({ setRefresshVentas: setRefreshViajes }: IVentasFormP
         <ComboClientes setSelected={onSelectChange} activa={idcliente} />
         <div className="form-group">
           <label htmlFor="fechasalida">Fecha de salida</label>
-          <input className="form-control" id="fechasalida" type="date" value={fechasalida.toLocaleDateString()} onChange={onInputChange} required />
+          <input className="form-control" id="fechasalida" type="date" value={fechasalida.toISOString().slice(0, 10)} onChange={onInputChange} required />
         </div>
 
         <ComboViajes setSelected={onSelectChange} activa={idviaje} />
@@ -69,7 +71,7 @@ export const VentasForm = ({ setRefresshVentas: setRefreshViajes }: IVentasFormP
 
       {loading && (
         <div className="alert alert-warning" role="alert">
-          Agregando viaje...
+          Agregando venta...
         </div>
       )}
       {!ok && errorMsg && !loading && (
